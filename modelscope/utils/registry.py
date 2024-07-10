@@ -1,8 +1,6 @@
 # Copyright (c) Alibaba, Inc. and its affiliates.
 
-import importlib
 import inspect
-from typing import List, Tuple, Union
 
 from modelscope.utils.logger import get_logger
 
@@ -18,6 +16,7 @@ class Registry(object):
     """
 
     def __init__(self, name: str):
+        print(name)
         self._name = name
         self._modules = {default_group: {}}
 
@@ -163,6 +162,7 @@ def build_from_cfg(cfg,
     Returns:
         object: The constructed object.
     """
+
     if not isinstance(cfg, dict):
         raise TypeError(f'cfg must be a dict, but got {type(cfg)}')
     if TYPE_NAME not in cfg:
@@ -188,6 +188,13 @@ def build_from_cfg(cfg,
     obj_type = args.pop(TYPE_NAME)
     if isinstance(obj_type, str):
         obj_cls = registry.get(obj_type, group_key=group_key)
+
+        # print("================================================================================================================================================")
+        # print(obj_cls)
+        # print(type(obj_cls))
+        # print(dir(type))
+        # print("================================================================================================================================================")
+
         if obj_cls is None:
             raise KeyError(
                 f'{obj_type} is not in the {registry.name}'
@@ -199,6 +206,7 @@ def build_from_cfg(cfg,
     else:
         raise TypeError(
             f'type must be a str or valid type, but got {type(obj_type)}')
+
     try:
         if hasattr(obj_cls, '_instantiate'):
             return obj_cls._instantiate(**args)

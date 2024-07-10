@@ -1,7 +1,6 @@
 import argparse
 from tinynas.searchers import build_searcher
-from tinynas.utils.dict_action import DictAction
-
+from tinynas.utils.dict_action import DictAction 
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Search a network model')
@@ -21,15 +20,18 @@ def parse_args():
 
 def main():
 
-    print("나는야 searcher입니다")
     args = parse_args()
     kwargs = dict(cfg_file=args.config)
     if args.cfg_options is not None:
         kwargs['cfg_options'] = args.cfg_options
 
+
+
+
     searcher = build_searcher(default_args = kwargs)
 
-    print(type(searcher))
+
+
     searcher.run()
 
 if __name__ == '__main__':

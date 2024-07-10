@@ -12,7 +12,8 @@ image_size = 224  # 224 for Imagenet, 480 for detection, 160 for mcu
 """ Model config """
 model = dict(
     type = 'CnnNet',
-    structure_info = [ 
+    structure_info = [
+
         {'class': 'ConvKXBNRELU', 'in': 3, 'out': 32, 's': 2, 'k': 3}, \
         {'class': 'SuperResK1KXK1', 'in': 32, 'out': 256, 's': 2, 'k': 3, 'L': 1, 'btn': 64}, \
         {'class': 'SuperResK1KXK1', 'in': 256, 'out': 512, 's': 2, 'k': 3, 'L': 1, 'btn': 128}, \

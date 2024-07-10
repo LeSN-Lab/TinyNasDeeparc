@@ -83,7 +83,7 @@ class CnnNet(nn.Module):
                  dropout_layer=None,
                  out_indices=(1, 2, 3, 4),
                  no_create=False,
-                 classfication=False,
+                 classfication=True,
                  pretrained=None,
                  cfg=None,
                  logger=None,

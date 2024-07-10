@@ -16,15 +16,19 @@ import warnings
 import numpy as np
 import torch
 
+
 from filelock import FileLock
-from tinynas.strategy import Strategy 
+from tinynas.strategy import Strategy
 from tinynas.evolutions import Population
-from tinynas.utils.file_utils import load_pyobj, save_pyobj 
+from tinynas.utils.file_utils import load_pyobj, save_pyobj
 from tinynas.utils.dist_utils import master_only, worker_only, get_dist_info,  is_master
-from tinynas.utils.misc import clever_format 
+from tinynas.utils.misc import clever_format
 from tinynas.utils.logger import get_root_logger
 from .base import BaseSearcher
+
+
 from .builder import SEARCHERS
+
 from .synchonizer import Synchonizer
 
 def check_duplicate(cfg, struct_info, logger=None):
@@ -257,6 +261,7 @@ class Searcher(BaseSearcher):
             # load random_structure_info, get the basic info, update the population
             random_struct_info = strategy.get_info_for_evolution(
                 structure_info=random_structure_info)
+
             if random_struct_info['is_satify_budget']:
                 popu_nas.update_population(random_struct_info)
     
@@ -273,7 +278,6 @@ class Searcher(BaseSearcher):
         last_export_generation_iteration = 0
 
         while True:
-
             enough_flag, self.popu_nas = self.synchonizer.sync_and_assign_jobs(self.popu_nas)
             if enough_flag:
                 self.logger.debug('meet termination signal. Break now.')

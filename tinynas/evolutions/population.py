@@ -34,6 +34,7 @@ class Population(metaclass=ABCMeta):
 
         acc_temp = model_info['score']
 
+
         if len(self.popu_acc_list) > 0:
             insert_idx = len(
                 self.popu_acc_list) if self.popu_acc_list[-1] < acc_temp else 0

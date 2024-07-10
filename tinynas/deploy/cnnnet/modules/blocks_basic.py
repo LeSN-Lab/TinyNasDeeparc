@@ -3,9 +3,6 @@
 # https://github.com/alibaba/lightweight-neural-architecture-search.
 
 import copy
-import os
-import sys
-
 import numpy as np
 import torch
 from torch import Tensor, nn

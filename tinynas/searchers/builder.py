@@ -4,7 +4,10 @@
 
 from modelscope.utils.registry import Registry, build_from_cfg
 
+
+print("1-2")
 SEARCHERS = Registry('searchers')
+
 
 def build_searcher(name: str = 'default_searcher', default_args: dict = None):
     """ build searcher given a searcher name
@@ -15,5 +18,7 @@ def build_searcher(name: str = 'default_searcher', default_args: dict = None):
         default_args (dict, optional): Default initialization arguments.
     """
     cfg = dict(type=name)
+
+
     return build_from_cfg(cfg, SEARCHERS, default_args=default_args)
 

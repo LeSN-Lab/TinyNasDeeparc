@@ -130,3 +130,4 @@ result.png
 tinynas/configs
 tinynas/tools
 tinynas/modelscope
+openmpi-4.0.1/*
